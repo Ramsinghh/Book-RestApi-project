@@ -34,18 +34,16 @@ public class BookController {
 	}
 
 	@PostMapping("/books")
-	public ResponseEntity<Book> addBook(@RequestBody Book book){
+	public ResponseEntity<Book> addBook(@RequestBody Book book) {
 		Book b = null;
-		try{
-			b= this.BookService.addBook(book);
+		try {
+			b = this.BookService.addBook(book);
 			return ResponseEntity.of(Optional.of(b));
-		}
-		catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-
 	@DeleteMapping("/books/{id}")
 	public ResponseEntity<Void> deleteBook(@PathVariable("id") int id){
 
